@@ -3,7 +3,7 @@ package com.pokemon.living_pokedex.domain.model
 import com.pokemon.living_pokedex.infrastructure.entities.Pokemon as PokemonEntity
 
 data class Pokemon (
-    val id: String? = null,
+    val id: Long? = null,
     val pokedexId: Int,
     val name: String,
     val speciesId: Int,

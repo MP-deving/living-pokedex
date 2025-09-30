@@ -1,27 +1,27 @@
 version: '3.8'
 
 services:
-  mongodb:
-    image: mongo:7.0
-    container_name: living-pokedex-mongo
+  db:
+    image: postgres:18.0
     restart: always
+    environment:
+      POSTGRES_USER: pokemon
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: living-pokedex
     ports:
-      - "27017:27017"
+      - '5432:5432'
     volumes:
-      - mongo_data:/data/db
-    environment:
-      MONGO_INITDB_DATABASE: living-pokedex
+      - ./postgres-data:/tmp/postgres/data
 
-  app:
-    build: .
-    container_name: pokedex-app
-    restart: always
-    ports:
-      - "8080:8080"
-    depends_on:
-      - mongodb
-    environment:
-      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/pokedex
+# Uncomment the following section if you are not running app from your IDE
+#  app:
+#    build: .
+#    container_name: pokedex-app
+#    restart: always
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - mongodb
+#    environment:
+#      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/pokedex
 
-volumes:
-  mongo_data:

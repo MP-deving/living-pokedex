@@ -23,9 +23,13 @@ class ImportPokemonFromCSVFileUseCase(
                     weight = columns[4].toInt(),
                     baseExperience = columns[5].toInt(),
                     order = columns[6].toInt(),
-                    isDefault = columns[7].toBoolean()
+                    isDefault = changeNumberToBoolean(columns[7].toInt())
                 )
             }.toList()
         storePokemonListGateway.execute(pokemonListFromBuferred)
+    }
+
+    private fun changeNumberToBoolean(num: Int): Boolean {
+        return num != 0
     }
 }

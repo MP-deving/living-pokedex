@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Positive
 data class CreatePokemonRequestDTO (
     @field:NotBlank
     val name: String,
-    val speciesId: Int?,
+    val speciesId: Int? = 0,
     @field:NotNull
     @field:Positive
     val height: Int,
@@ -17,4 +17,7 @@ data class CreatePokemonRequestDTO (
     @field:NotNull
     @field:Positive
     val baseExperience: Int,
+    @field:Positive
+    val order: Int? = 0,
+    val isDefault: Boolean? = true
 )

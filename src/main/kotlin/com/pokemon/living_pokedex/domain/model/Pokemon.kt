@@ -1,10 +1,11 @@
 package com.pokemon.living_pokedex.domain.model
 
+import com.pokemon.living_pokedex.web.dto.request.CreatePokemonRequestDTO
 import com.pokemon.living_pokedex.infrastructure.entities.Pokemon as PokemonEntity
 
-data class Pokemon (
+data class Pokemon(
     val id: Long? = null,
-    val pokedexId: Int,
+    val pokedexId: Int? = null,
     val name: String,
     val speciesId: Int,
     val height: Int,
@@ -15,7 +16,7 @@ data class Pokemon (
 ) {
     fun toEntity() = PokemonEntity(
         id = id,
-        pokedexId = pokedexId,
+        pokedexId = pokedexId!!,
         name = name,
         speciesId = speciesId,
         height = height,

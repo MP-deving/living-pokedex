@@ -5,7 +5,9 @@ import com.pokemon.living_pokedex.domain.exception.PokedexIdNotFoundException
 import com.pokemon.living_pokedex.domain.exception.SpeciesIdNotFoundException
 import com.pokemon.living_pokedex.domain.model.Pokemon
 import com.pokemon.living_pokedex.infrastructure.repository.PokemonRepository
+import org.springframework.stereotype.Component
 
+@Component
 class PrepareNewPokemonToStoreUseCase(
     private val pokemonRepository: PokemonRepository,
     private val checkOrderNumberReorderUseCase: CheckOrderNumberReorderUseCase

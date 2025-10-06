@@ -1,7 +1,9 @@
 package com.pokemon.living_pokedex.domain.usecase
 
 import com.pokemon.living_pokedex.infrastructure.repository.PokemonRepository
+import org.springframework.stereotype.Component
 
+@Component
 class CheckOrderNumberReorderUseCase(
     private val pokemonRepository: PokemonRepository
 ) {

@@ -1,6 +1,7 @@
 package com.pokemon.living_pokedex.web.config
 
 import com.pokemon.living_pokedex.domain.exception.OrderNumberNotFoundException
+import com.pokemon.living_pokedex.domain.exception.PokedexIdNotFoundException
 import com.pokemon.living_pokedex.domain.exception.SpeciesIdNotFoundException
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
@@ -37,6 +38,20 @@ class GlobalExceptionHandler {
                 code = HttpStatus.NOT_FOUND.name,
                 status = HttpStatus.NOT_FOUND.value(),
                 message = e.message ?: "SpeciesId not found",
+            ),
+            HttpStatus.NOT_FOUND
+        )
+    }
+
+    @ExceptionHandler(value = [PokedexIdNotFoundException::class])
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    fun pokedexIdNotFoundException(e: PokedexIdNotFoundException): ResponseEntity<ErrorMessage> {
+        logger.error("PokedexIdNotFoundException: ", e)
+        return ResponseEntity(
+            ErrorMessage(
+                code = HttpStatus.NOT_FOUND.name,
+                status = HttpStatus.NOT_FOUND.value(),
+                message = e.message ?: "Pokedex Id not found",
             ),
             HttpStatus.NOT_FOUND
         )

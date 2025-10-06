@@ -5,7 +5,7 @@ import com.pokemon.living_pokedex.infrastructure.entities.Pokemon as PokemonEnti
 
 data class Pokemon(
     val id: Long? = null,
-    val pokedexId: Int,
+    val pokedexId: Int? = null,
     val name: String,
     val speciesId: Int,
     val height: Int,
@@ -16,7 +16,7 @@ data class Pokemon(
 ) {
     fun toEntity() = PokemonEntity(
         id = id,
-        pokedexId = pokedexId,
+        pokedexId = pokedexId!!,
         name = name,
         speciesId = speciesId,
         height = height,
@@ -25,15 +25,4 @@ data class Pokemon(
         order = order,
         isDefault = isDefault
     )
-
-    fun fromDTO(createPokemonRequestDTO: CreatePokemonRequestDTO) =
-        Pokemon(
-            name = createPokemonRequestDTO.name,
-            speciesId = createPokemonRequestDTO.speciesId ?: 0,
-            height = createPokemonRequestDTO.height,
-            weight = createPokemonRequestDTO.weight,
-            baseExperience = createPokemonRequestDTO.baseExperience,
-            order = createPokemonRequestDTO.order ?: 0,
-            isDefault = createPokemonRequestDTO.isDefault ?: true
-        )
 }

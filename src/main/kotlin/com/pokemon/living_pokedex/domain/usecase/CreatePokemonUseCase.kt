@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component
 class CreatePokemonUseCase(
     private val storePokemonGateway: StorePokemonGateway
 ) {
-    fun execute(pokemonDomain: Pokemon){
+    fun execute(pokemonDomain: Pokemon) {
         storePokemonGateway.execute(pokemonDomain)
     }
 }
